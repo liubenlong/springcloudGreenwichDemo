@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@EnableEurekaClient
+@EnableEurekaClient //启用EurekaClient服务
 @RestController
 public class Application {
 
@@ -18,7 +18,6 @@ public class Application {
 
     @Value("${server.port}")
     String port;
-
 
     @RequestMapping("/")
     public String hi(String name) {

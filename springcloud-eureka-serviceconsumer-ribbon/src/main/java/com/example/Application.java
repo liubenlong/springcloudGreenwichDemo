@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableEurekaClient
+@EnableEurekaClient //启用EurekaClient组件
 @EnableDiscoveryClient  //启用服务发现组件
 public class Application {
 
