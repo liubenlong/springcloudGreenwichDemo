@@ -1,0 +1,13 @@
+server:
+  port: 8082
+
+# 服务与服务之间相互调用一般都是根据这个name 。
+spring:
+  application:
+    name: springcloud-eureka-serviceprovider
+
+eureka:
+  client:
+    serviceUrl:
+#      指定服务注册中心的地址
+      defaultZone: http://localhost:8080/eureka/

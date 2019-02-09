@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: springcloud-eureka-server
+
+#  在默认情况下erureka server也是一个eureka client ,必须要指定一个 server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+#   registerWithEureka和fetchRegistry=false 表明自己是一个eureka server.
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+

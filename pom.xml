@@ -12,6 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+        <spring.cloud.version>Finchley.SR2</spring.cloud.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <lombok.version>1.18.4</lombok.version>
@@ -19,7 +20,9 @@
     </properties>
 
     <modules>
-        <module>springcloud-eureka</module>
+        <module>springcloud-eureka-server</module>
+        <module>springcloud-eureka-serviceprovider</module>
+		<module>springcloud-eureka-serviceconsumer-ribbon</module>
     </modules>
 
     <dependencyManagement>
@@ -34,7 +37,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR2</version>
+                <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
