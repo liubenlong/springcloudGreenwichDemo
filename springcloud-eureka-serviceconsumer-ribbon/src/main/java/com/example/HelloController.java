@@ -19,6 +19,7 @@ public class HelloController {
         return restTemplate.getForObject("http://springcloud-eureka-serviceprovider?name=" + name, String.class);
     }
 
+    //com.example.HelloController.hi(String) 的fallback方法
     public String hiFallBack(String name) {
         return " fall back. " + name;
     }
