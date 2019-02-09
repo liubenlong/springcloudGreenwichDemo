@@ -23,6 +23,8 @@
         <module>springcloud-eureka-server</module>
         <module>springcloud-eureka-serviceprovider</module>
 		<module>springcloud-eureka-serviceconsumer-ribbon</module>
+		<module>springcloud-eureka-serviceconsumer-feign</module>
+		
     </modules>
 
     <dependencyManagement>

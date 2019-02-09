@@ -1,10 +1,10 @@
 server:
-  port: 8082
+  port: 8086
 
 # 服务与服务之间相互调用一般都是根据这个name 。
 spring:
   application:
-    name: springcloud-eureka-serviceprovider
+    name: springcloud-eureka-serviceconsumer-feign
 
 eureka:
   client:
