@@ -1,7 +1,9 @@
+#这里使用的是 bootstrap.yml 这个配置，bootstrap的优先级高于application，很多配置都是要在服务启动前加载，
+#所以使用bootstrap
 spring:
   cloud:
     config:
-      #启动什么环境下的配置，dev 表示开发环境，这跟你仓库的文件的后缀有关，比如，仓库配置文件命名格式是cloud-config-dev.properties,所以profile 就要写dev
+      #启动什么环境下的配置
       profile: dev
-      label: master
+      # 配置服务的URL
       uri: http://127.0.0.1:8087/

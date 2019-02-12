@@ -9,9 +9,12 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/forezp/SpringcloudConfig.git
-          searchPaths: respo
-#          username: 852026881@qq.com
-#          password: lbl0168
-          skip-ssl-validation: true
+          #git仓库的地址
+          uri: https://github.com/liubenlong/springcloudFinchleyDemo.git
+          # 配置仓库路径，这里是文件夹搜索路径
+          searchPaths: mySpringCloudConfig
+          # git仓库的用户名和密码，如果是public仓库，可以不写
+          username: 852026881@qq.com
+          password: lbl0168
+          # 指定分支，不指定默认是master
           default-label: master
