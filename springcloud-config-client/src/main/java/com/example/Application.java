@@ -14,11 +14,11 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Value("${foo}")
-    String foo;
+    @Value("${name}")
+    String name;
 
     @RequestMapping(value = "/hi")
     public String hi(){
-        return foo;
+        return "hi "+name;
     }
 }
