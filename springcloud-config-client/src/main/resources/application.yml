@@ -1,12 +1,7 @@
 server:
-  port: 8088
+  port: 8087
 
 # 服务与服务之间相互调用一般都是根据这个name 。
 spring:
   application:
-    name: springcloud-config-client
-  cloud:
-    config:
-      label: master
-      profile: dev
-      uri: http://localhost:8887/
+    name: springcloud-config-server

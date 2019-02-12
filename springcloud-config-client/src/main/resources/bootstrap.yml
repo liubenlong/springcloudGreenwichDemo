@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      #启动什么环境下的配置，dev 表示开发环境，这跟你仓库的文件的后缀有关，比如，仓库配置文件命名格式是cloud-config-dev.properties,所以profile 就要写dev
+      profile: dev
+      label: master
+      uri: http://127.0.0.1:8087/

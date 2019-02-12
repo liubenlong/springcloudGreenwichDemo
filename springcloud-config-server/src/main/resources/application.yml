@@ -9,6 +9,9 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/liubenlong/springcloudFinchleyDemo
-          search-paths: mySpringCloudConfig
+          uri: https://github.com/forezp/SpringcloudConfig.git
+          searchPaths: respo
+#          username: 852026881@qq.com
+#          password: lbl0168
+          skip-ssl-validation: true
           default-label: master
