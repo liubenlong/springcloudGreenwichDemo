@@ -1,7 +1,15 @@
 server:
   port: 8088
 
-# 服务与服务之间相互调用一般都是根据这个name 。
 spring:
   application:
     name: springcloud-config-client
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
+  endpoint:
+    health:
+      show-details: always

@@ -7,3 +7,5 @@ spring:
       profile: dev
       # 配置服务的URL
       uri: http://127.0.0.1:8087/
+      label: master
+
