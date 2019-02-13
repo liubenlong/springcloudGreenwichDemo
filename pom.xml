@@ -28,8 +28,9 @@
         <module>springcloud-config-server</module>
         <module>springcloud-config-client</module>
 
-
 		
+        <module>rabbitmq-helloworld</module>
+
     </modules>
 
     <dependencyManagement>
