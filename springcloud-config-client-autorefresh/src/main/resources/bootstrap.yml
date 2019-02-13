@@ -1,0 +1,21 @@
+#这里使用的是 bootstrap.yml 这个配置，bootstrap的优先级高于application，很多配置都是要在服务启动前加载，
+#所以使用bootstrap
+spring:
+  cloud:
+    config:
+      #启动什么环境下的配置
+      profile: dev
+      label: master
+
+      # 配置服务的URL【如果使用eureka，则不再写URL，使用下面的discovery的形式】
+#      uri: http://127.0.0.1:8087/
+
+      discovery:
+        enabled: true
+        service-id: springcloud-config-server # 指定配置中心的服务名称
+
+eureka:
+  client:
+    serviceUrl:
+      #      指定服务注册中心的地址
+      defaultZone: http://localhost:8080/eureka/
