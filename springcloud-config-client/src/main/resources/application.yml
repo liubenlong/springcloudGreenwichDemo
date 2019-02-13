@@ -5,11 +5,28 @@ spring:
   application:
     name: springcloud-config-client
 
+#配置actuator
+# 1.X版本的springboot 配置： management.security.enabled=false  已经作废
 management:
   endpoints:
     web:
       exposure:
-        include: refresh,health,info
+        include: refresh,health,info # 2.X 版本的配置方式。默认只有health,info，这里需要将refresh添加上
   endpoint:
     health:
       show-details: always
+      # 注：当我使用eureka时，如果这里指定了端口，就总是使用这个端口，这里先去掉，具体原因待分析
+#  server: # 指定actuator端口。如果不指定则与系统服务端口一致。建议修改
+#    port: 8888
+
+
+
+
+##actuator端口
+#  management.server.port=9001
+#  #修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改
+#  management.endpoints.web.base-path=/monitor
+#  #开放所有页面节点  默认只开启了health、info两个节点
+#  management.endpoints.web.exposure.include=*
+#  #显示健康具体信息  默认不会显示详细信息
+#  management.endpoint.health.show-details=always
