@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: springcloud-eureka-server-cluster
+
+--- #注意这里是三个"减号"
+spring:
+  profiles: eureka1  # 通过profile指定启动服务
+  security: # 配置安全验证
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 8001
+eureka:
+  server:
+    enable-self-preservation: false # 测试时关闭自我保护机制，保证不可用服务及时踢出【生成环境不要打开】
+  instance:
+    hostname: eureka1
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@eureka2:8002/eureka/,http://admin:123456@eureka3:8003/eureka/
+#    fetch-registry: true  # 表示是否从eureka server获取注册信息，如果是单一节点，不需要同步其他eureka server节点，则可以设置为false，但此处为集群，应该设置为true，默认为true，可不设置
+#    register-with-eureka: true  # 表示是否将自己注册到eureka server，因为要构建集群环境，需要将自己注册到及群众，所以应该开启。默认为true，可不显式设置。
+---
+spring:
+  profiles: eureka2
+  security:
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 8002
+eureka:
+  server:
+    enable-self-preservation: false # 测试时关闭自我保护机制，保证不可用服务及时踢出
+  instance:
+    hostname: eureka2
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@eureka1:8001/eureka/,http://admin:123456@eureka3:8003/eureka/
+---
+spring:
+  profiles: eureka3
+  security:
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 8003
+eureka:
+  server:
+    enable-self-preservation: false # 测试时关闭自我保护机制，保证不可用服务及时踢出
+  instance:
+    hostname: eureka3
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@eureka1:8001/eureka/,http://admin:123456@eureka2:8002/eureka/

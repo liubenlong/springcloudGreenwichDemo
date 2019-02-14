@@ -11,6 +11,9 @@ eureka:
     serviceUrl:
 #      指定服务注册中心的地址
       defaultZone: http://localhost:8080/eureka/
+      #上面是eureka单机注册中心。下面是eureka集群模式
+#      defaultZone: http://admin:123456@eureka2:8001/eureka/,http://admin:123456@eureka3:8002/eureka/,http://admin:123456@eureka2:8003/eureka/
+
 #启用hystrix
 feign:
   hystrix:
