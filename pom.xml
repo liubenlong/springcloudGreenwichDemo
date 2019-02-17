@@ -33,7 +33,10 @@
         <module>springcloud-config-server-autorefresh</module>
         <module>springcloud-config-client-autorefresh</module>
 
+        <module>springcloud-gateway-helloworld</module>
+
         <module>rabbitmq-helloworld</module>
+
 
     </modules>
 

@@ -1,0 +1,132 @@
+server:
+  port: 8095
+
+# 最佳实践：springcloud应用都要指定application.name
+spring:
+  application:
+    name: springcloud-gateway-helloworld
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  profiles:
+    active: method_route
+
+
+# 指定fallbackcommand这个command的超时时间。用于下面的hystrix测试
+hystrix:
+  command:
+    fallbackcommand:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+--- # Path--请求路径
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: path_route
+        uri: http://httpbin.org:80/
+        predicates:
+        - Path=/get
+  profiles: path_route
+--- # After--请求时间
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: after_route
+        uri: http://httpbin.org:80/get # 这里后面的get没有生效，生效的只是前面的host: httpbin.org
+        predicates:
+        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+  profiles: after_route
+--- # Header--请求头
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: header_route
+        uri: http://httpbin.org:80/
+        predicates:
+        - Header=X-Request-Id, \d+
+        filters:
+        - RemoveRequestHeader=X-Request-Foo  # 将header中的参数移除
+        - RewritePath=/foo/(?<segment>.*), /$\{segment}  # URL重写（允许使用正则表达式）
+  profiles: header_route
+
+
+--- # Cookie--请求Cookie
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: cookie_route
+        uri: http://httpbin.org:80/
+        predicates:
+        - Cookie=name, lisi
+  profiles: cookie_route
+
+--- # Host--请求Host
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: http://httpbin.org:80/
+        predicates:
+        - Host=*.abc.com
+  profiles: host_route
+
+--- # Method--请求Method
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: method_route
+        uri: http://httpbin.org:80/
+        predicates:
+        - Method=GET
+        filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}' #用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象
+            redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率
+            redis-rate-limiter.burstCapacity: 3 #令牌桶总容量。
+  profiles: method_route
+
+
+--- # Query--请求参数
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: query_route
+        uri: http://httpbin.org:80/
+        predicates:
+        - Query=foo, abc
+        filters:
+        - AddRequestHeader=X-Request-Foo, Bar
+        - AddRequestParameter=age, 10
+        - name: Hystrix # 这里就是指定了 HystrixGatewayFilterFactory 这个过滤器工厂。下面是该工厂的参数
+          args:
+            name: fallbackcommand
+            fallbackUri: forward:/fallback
+        - PrefixPath=/hello
+  profiles: query_route
+
+
+--- # prefixPath_route
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: prefixPath_route
+        uri: http://127.0.0.1:8095/
+        predicates:
+        - Query=foo, abc
+        filters:
+        - PrefixPath=/hello
+        - RedirectTo=302, http://127.0.0.1:8095/hello/b # 执行完请求后重定向到b
+  profiles: prefixPath_route
