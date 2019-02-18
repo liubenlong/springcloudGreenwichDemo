@@ -45,6 +45,11 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
         <!-- jaxb模块引用 - start -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
