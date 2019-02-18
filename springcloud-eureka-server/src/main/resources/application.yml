@@ -17,5 +17,5 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
-      # 测试时关闭自我保护机制，保证不可用服务及时踢出
+      # 测试时关闭自我保护机制，保证不可用服务及时踢出【生产环境需要保持开启】
       enable-self-preservation: false

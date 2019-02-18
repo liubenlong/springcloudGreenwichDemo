@@ -34,6 +34,7 @@
         <module>springcloud-config-client-autorefresh</module>
 
         <module>springcloud-gateway-helloworld</module>
+        <module>springcloud-gateway-witheureka</module>
 
         <module>rabbitmq-helloworld</module>
 

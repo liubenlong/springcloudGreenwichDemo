@@ -23,4 +23,12 @@ public class Application {
     public String hi(String name) {
         return String.format("hello %s , from port=%s", name, port);
     }
+
+
+    @RequestMapping("/hello/hi")
+    public String hello(String name) {
+        return String.format("hello %s , from port=%s", name, port);
+    }
+
+
 }
