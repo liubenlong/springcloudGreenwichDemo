@@ -9,14 +9,8 @@ spring:
     host: localhost
     port: 6379
     database: 0
-  profiles:
-    active: method_route
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: false
-          lower-case-service-id: true
       routes:
       - id: service-hi
         uri: lb://springcloud-eureka-serviceprovider # lb 标识负载均衡loadbalance，SERVICE-HI是服务名称
