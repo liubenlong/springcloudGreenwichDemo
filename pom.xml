@@ -38,6 +38,7 @@
 
         <module>rabbitmq-helloworld</module>
 
+        <module>springcloud-zipkin-server</module>
 
     </modules>
 

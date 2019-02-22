@@ -7,6 +7,10 @@ spring:
     name: springcloud-eureka-serviceconsumer-feign
   zipkin:
     base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      #应采样的请求的概率。 例如。 应该对1.0  -  100％的请求进行抽样。 精度仅为整数（即不支持0.1％的迹线）。
+      probability: 1.0
 
 eureka:
   client:
