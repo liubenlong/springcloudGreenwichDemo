@@ -25,18 +25,49 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.zipkin.java/zipkin-server -->
+
+        <!-- 使用消息的方式收集数据（使用rabbitmq） -->
         <dependency>
             <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin-server</artifactId>
-            <version>2.10.1</version>
+            <artifactId>zipkin-autoconfigure-collector-rabbitmq</artifactId>
+            <version>2.12.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.zipkin.java/zipkin-autoconfigure-ui -->
+
+        <!-- zipkin 存储到数据库 -->
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-storage-mysql</artifactId>
+            <version>2.12.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
+        </dependency>
+
+        <!-- spring-cloud-starter-zipkin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <!-- zipkin 界面-->
         <dependency>
             <groupId>io.zipkin.java</groupId>
             <artifactId>zipkin-autoconfigure-ui</artifactId>
-            <version>2.10.1</version>
+            <version>2.12.1</version>
         </dependency>
+        <!-- zipkin 服务类-->
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
+            <version>2.12.1</version>
+        </dependency>
+
+
 
 
         <!-- jaxb模块引用 - start -->

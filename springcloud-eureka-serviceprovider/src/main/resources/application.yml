@@ -6,9 +6,9 @@ spring:
   application:
     name: springcloud-eureka-serviceprovider
   zipkin:
-#    base-url: http://localhost:9411
+#    base-url: http://localhost:9411  #http方式提交到zipkin
     sender:
-      type: rabbit
+      type: rabbit  # 切换到rabbitmq
     enabled: true
   sleuth:
     sampler:
